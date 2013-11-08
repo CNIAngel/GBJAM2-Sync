@@ -32,7 +32,3 @@ X - Action
 X - Action
 
 ← → ↑ ↓ - Move Player
-
--PLANS-
-Make levels for SYNC.
-Sound Effect for switching on/off a system tile
