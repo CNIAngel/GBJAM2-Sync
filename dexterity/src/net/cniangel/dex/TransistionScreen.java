@@ -11,7 +11,7 @@ public class TransistionScreen implements Screen {
 
 	DexGame game;
 	SpriteBatch batch;
-	String msg = "Round-", action = "switch",action2 = " tiles", action3 = "with x";
+	String msg = "Round-";
 	Sprite bg = new Sprite(Art.bg);
 	int counter = 0, screenState = 0;
 	boolean won = false;
@@ -53,11 +53,6 @@ public class TransistionScreen implements Screen {
 		batch.begin();
 		bg.draw(batch);
 		Art.drawFont(msg, batch, game.w / 2 - (8 * msg.length()), game.h / 2 - 8);
-		if (game.level == 0) {
-			Art.drawFont(action, batch, game.w / 2 - (8 * action.length()), game.h / 2 - 24);
-			Art.drawFont(action2, batch, game.w / 2 - (8 * action2.length()), game.h / 2 - 40);
-			Art.drawFont(action3, batch, game.w / 2 - (8 * action3.length()), game.h / 2 - 58);
-		}
 		batch.end();
 		
 		counter++;

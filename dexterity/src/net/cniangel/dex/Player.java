@@ -50,44 +50,32 @@ public class Player {
 		// If the player isn't dead then do these things
 		if (isDead != true) {
 			// Check for player movement
-			// If the player presses the corresponding arrow key and the move counter is over 12
+			// If the player presses the corresponding arrow key and the move counter is over 9
 			// then add (or subtract) 16 to it's x or y value.
 			// Then reset the move counter to 0.
-			if (Gdx.input.isKeyPressed(Keys.LEFT) && moveCounter > 12) {
+			if (Gdx.input.isKeyPressed(Keys.LEFT) && moveCounter > 9) {
 				nextPosition.sub(16, 0);
 				moveCounter = 0;
-			}
-			if (Gdx.input.isKeyPressed(Keys.RIGHT) && moveCounter > 12) {
+			} else if (Gdx.input.isKeyPressed(Keys.RIGHT) && moveCounter > 9) {
 				nextPosition.add(16, 0);
 				moveCounter = 0;
-			}
-			if (Gdx.input.isKeyPressed(Keys.UP) && moveCounter > 12) {
+			} else if (Gdx.input.isKeyPressed(Keys.UP) && moveCounter > 9) {
 				nextPosition.add(0, 16);
 				moveCounter = 0;
-			}
-			if (Gdx.input.isKeyPressed(Keys.DOWN) && moveCounter > 12) {
+			} else if (Gdx.input.isKeyPressed(Keys.DOWN) && moveCounter > 9) {
 				nextPosition.sub(0, 16);
 				moveCounter = 0;
 			}
 			
-			// Check if the player wants to switch the tile
-			if (Gdx.input.isKeyPressed(Keys.X) && switchCounter > 12) {
-				// Go through all the tiles
-				for (Tile tile: play.floor) {
-					// If the tile is lit, then un-light it and visa versa
-					if (bounds.overlaps(tile.box) && tile.lit == false) {
-						tile.lit = true;
-						tile.setSprite(1);
-					} else if (bounds.overlaps(tile.box) && tile.lit == true) {
-						tile.lit = false;
-						tile.setSprite(0);
-					}
+			// Go through all the tiles
+			for (Tile tile: play.floor) {
+				// Light up the tile if it's un-lit
+				if (bounds.overlaps(tile.box) && tile.lit == false) {
+					tile.lit = true;
+					tile.setSprite(1);
 				}
-				// Reset the counter to 0
-				switchCounter = 0;
 			}
-			// Add one to the counters
-			switchCounter++;
+			
 			moveCounter++;
 		}
 		

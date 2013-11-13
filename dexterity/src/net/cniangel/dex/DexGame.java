@@ -3,7 +3,9 @@ package net.cniangel.dex;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class DexGame extends Game {
@@ -34,6 +36,10 @@ public class DexGame extends Game {
 		input = new Input();
 		Gdx.input.setInputProcessor(input);
 		
+		if (Gdx.app.getType() ==  ApplicationType.Android) {
+			Gdx.graphics.setDisplayMode((int) w,(int) h, true);
+		}
+		
 		// Set up Preferences so peple can come back and play from where they left off
 		prefs = Gdx.app.getPreferences("settings.prefs");
 		level = prefs.getInteger("level", 0);
@@ -42,6 +48,8 @@ public class DexGame extends Game {
 		// Initialize the TitleScreen and set it as the current screen
 		if (title == null) title = new TitleScreen(this);
 		setScreen(title);
+		
+		
 		
 	}
 
